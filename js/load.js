@@ -20,5 +20,7 @@ class LoadExternalContent {
   }
 }
 
+
+
 var loadExternalContent = new LoadExternalContent("#blog");
 loadExternalContent.init();
