@@ -1,22 +1,20 @@
 class LoadExternalContent {
   constructor(blogId) {
-    this.blog = $(blogId)
+    this.blog = $(blogId);
   }
-  init() {
+  init = () => {
     this.createTargetDiv();
-    this.blog.find("li").click(this.addContent)
+    this.blog.find("li").click(this.addContent);
   }
   addContent = (event) => {
     event.preventDefault();
     $(event.currentTarget).find("div").load(`data/blog.html #${$(event.currentTarget).find("h3").data("blogNo")}`);
   }
-  createTargetDiv() {
-    let count = 1;
-    this.blog.find("h3").each(function() {
-      $(this).data(`blogNo`,`post${count}`)
-      count = count + 1;
+  createTargetDiv = () => {
+    this.blog.find("h3").each((index, element) =>{
+      $(element).data(`blogNo`,`post${index+1}`);
     })
-    this.blog.find("li").append("<div />")
+    this.blog.find("li").append($("<div />",{"blogName": "targetDiv"}));
   }
 }
 
